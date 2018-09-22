@@ -11,7 +11,7 @@ bot = telebot.TeleBot(token)
 @bot.message_handler(commands=['start'])
 def handle_start_help(message):
     bot.send_message(message.chat.id, 'Привет! Я бот погоды!\nЧтобы узнать текущую погоду, '
-                                            'введите команду /now и название города')
+                                            'введите команду /now')
 
 @bot.message_handler(commands=['now'])
 def Choose_user_city(message):
