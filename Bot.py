@@ -20,9 +20,6 @@ def Choose_user_city(message):
                        params={'id': 498817, 'units': 'metric', 'lang': 'ru', 'APPID': appid})
     data = res.json()
 
-    L1 = data['sys']['sunrise']
-    M1 = data['sys']['sunset']
-
     A = ("Погода в Санкт-Петербурге:\n"
         + "\n\nЗа окном: " + str(data['weather'][0]['description'])
         + "\nТемпература: " + str(data['main']['temp'])
@@ -34,9 +31,9 @@ def Choose_user_city(message):
         + "\nНаправление ветра: " + str(data['wind']['deg']) + "°"
         + "\nОблачность: " + str(data['clouds']['all']) + "%\n"
         + 'Время восхода: '
-        + time.strftime("%H:%M:%S", time.localtime(float(L1)))
+        + time.strftime("%H:%M:%S", time.localtime(float(data['sys']['sunrise'])))
         + '\nВремя заката: '
-        + time.strftime("%H:%M:%S", time.localtime(float(M1)))
+        + time.strftime("%H:%M:%S", time.localtime(float(data['sys']['sunset'])))
         + '\n')
     bot.send_message(message.chat.id, A)
 
